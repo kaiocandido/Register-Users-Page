@@ -1,10 +1,11 @@
 
 import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Title, Container, Form, ContainerInputs, Input, InputLabel } from './style'
+import { Container, Form, ContainerInputs, Input, InputLabel } from './style'
 import api from '../../services/api'
 import Button from '../../components/Button'
 import TopBackground from '../../components/TopBackground'
+import Title from '../../components/Title'
 
 
 function Home() {
