@@ -9,47 +9,29 @@ import { TrashIcon, Container, ContainerUsers, CardUsers, AvatarUser } from './s
 import trash from '../../assets/trash.svg'
 
 function ListUsers() {
-
     const [users, setUsers] = useState([])
-
-    //userEffect -> Pegar usuarios
-
     useEffect(() => {
-
+        // Function to fetch users from the API
         async function getUsers() {
             const { data } = await api.get('/usuarios')
-            console.log(data)
-
             setUsers(data)
         }
-
         getUsers()
-
     }, [])
 
-    //deletando
+     // Function to delete a user by id
     async function deleteUsers(id) {
         await api.delete(`./usuarios/${id}`)
-
-
         const updatedUsers = users.filter(user => user.id !== id)
-
         setUsers(updatedUsers)
     }
 
-
-    //array na tela 37 - linha
-
-    //TROCA DE PAGINA 
+    // Hook to navigate to different routes
     const naviteHome = useNavigate()
-
     return (
         <Container>
-
             <TopBackground />
             <Title>Listar Usuarios</Title>
-
-
             <ContainerUsers>
                 {users.map(user => (
                     <CardUsers key={user.id}>
@@ -58,18 +40,11 @@ function ListUsers() {
                             <h2>{user.name}</h2>
                             <p>{user.email}</p>
                             <p>{user.age}</p>
-
                         </div>
-                        <TrashIcon src={trash} alt='lixo' onClick={() => deleteUsers(user.id)}/>
-
+                        <TrashIcon src={trash} alt='lixo' onClick={() => deleteUsers(user.id)} />
                     </CardUsers>
-
                 ))}
-
             </ContainerUsers>
-
-
-
             <Button onClick={() => naviteHome('/')}>Voltar</Button>
         </Container>
     )

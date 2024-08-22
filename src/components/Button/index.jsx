@@ -1,18 +1,13 @@
-import{Button} from './style'
+import { Button } from './style'
 import PropTypes from 'prop-types'
 
-function DefaultButton({children, thema, ...props}) {
-    {
-        return(
-
-            <Button {...props} thema={thema}>{children}</Button>
-        )
-
-
-    }
+function DefaultButton({ children, thema, ...props }) {
+    return (
+        <Button {...props} thema={thema}>{children}</Button>
+    )
 }
 
-DefaultButton.prototype ={
+DefaultButton.prototype = {
     children: PropTypes.node.isRequired,
     thema: PropTypes.string
 }
